@@ -25,6 +25,63 @@
         audio.pause();
         playin = false;
       }
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Interactive Czech Flag</title>
+  </head>
+  <body id=all style='margin: 0px; padding: 0px; border: 0px; overflow: hidden;'>
+    <img id="triangle" style='margin: 0; width: auto; height: auto; max-height: 100vh; max-width: 100%; object-fit: contain; display: inline' src='data:image/svg+xml;utf8,<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="9000" height="6000">
+    <rect width="9000" height="6000" fill="rgb(215, 20, 26)"/>
+    <rect width="9000" height="3000" fill="white"/>
+    <path d="M 4500,3000 0,0 V 6000 z" fill="rgb(17, 69, 126)"/>
+    </svg>' onclick=play()>
+    
+    <img id="bars" style='margin: 0; width: auto; height: auto; max-height: 100vh; max-width: 100%; object-fit: contain; display: none;' src = 'data:image/svg+xml;utf8,<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="9000" height="6000">
+    <rect width="9000" height="6000" fill="rgb(215, 20, 26)"/>
+    <rect width="9000" height="3000" fill="white"/>
+    <rect width="1400" height="6000" fill="rgb(17, 69, 126)"/>
+    <rect x="3100" width="1400" height="6000" fill="rgb(17, 69, 126)"/>
+    </svg>' onclick=pause()>
+    <audio id="audio"></audio>
+    <script>
+      var audio = document.getElementById("audio");
+      var triangle = document.getElementById("triangle");
+      var bars = document.getElementById("bars");
+      var everythin = document.getElementById("all");
+      var playin = false;
+      const queryString = window.location.search;
+      const url = new URL(window.location.href); 
+      var musicURL = url.searchParams.get('m'); 
+      if (musicURL == undefined)
+      {
+        audio.src = "https://cs1.mp3.pm/download/38764109/QVpQZnNFdmx5SXFabkRmN21GSEJabFpCVnhwTW9sYlh3ZjlzYkFHOEU5MFlEWS81OFUxYVhXTGt3Tkd2SEhKMWROV1JDZk5iVU1wS3JJNVg3T0x6eDdxNG9JNHIzWkFDYzNFRzRwNFVXNk1pdFpweDlSN2tLbVNwcnRWYkZpVXg/Ivan_Mladek_-_Jo_in_Z_Ba_in_1978_(mp3.pm).mp3";
+      }
+      else 
+      {
+        audio.src = musicURL;
+      }
+      audio.preload = "auto";
+      var bColor = url.searchParams.get('bg'); 
+      if (bColor != undefined)
+      {
+        document.body.style.background = bColor;
+      }
+      console.log(bColor);
+      console.log(document.body.style.background);
+      function play() {
+        bars.style.display = "inline";
+        triangle.style.display = "none";
+        audio.play();
+        playin = true;
+      }
+      function pause() {
+        bars.style.display = "none";
+        triangle.style.display = "inline";
+        audio.pause();
+        playin = false;
+      }
       document.body.onkeyup = function(e) {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32  )   
         {
