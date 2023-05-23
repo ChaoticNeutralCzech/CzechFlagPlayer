@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title>Interactive Czech Flag</title>
   </head>
-  <body id=all style='margin: 0px; padding: 0px; border: 0px; overflow: hidden;'>
-    <img id="triangle" style='margin: 0; width: auto; height: auto; max-height: 100vh; max-width: 100%; object-fit: contain; display: inline' src='data:image/svg+xml;utf8,<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="9000" height="6000">
+  <body style='margin: 0px; padding: 0px; border: 0px; overflow: hidden;'>
+  <img id="triangle" style='margin: 0; width: auto; height: auto; max-height: 100vh; max-width: 100%; object-fit: contain; display: inline' src='data:image/svg+xml;utf8,<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="9000" height="6000">
 	<rect width="9000" height="6000" fill="rgb(215, 20, 26)"/>
 	<rect width="9000" height="3000" fill="white"/>
 	<path d="M 4500,3000 0,0 V 6000 z" fill="rgb(17, 69, 126)"/>
@@ -22,11 +22,10 @@
 	
 	<div id="overlay" style='position: fixed; display: none; width: "80px"; height: "0px"; top: 0; left: 0; background-color: rgba(255,255,255,.7); font-family: sans-serif'> <a href = "https://github.com/ChaoticNeutralCzech/CzechFlagPlayer"> About </a> • <a href = "https://github.com/ChaoticNeutralCzech/CzechFlagPlayer#change-music-or-background-color"> Customize </a></div>
 	
-    <script>
+  <script>
 	  var audio = document.getElementById("audio");
 	  var triangle = document.getElementById("triangle");
 	  var bars = document.getElementById("bars");
-	  var everythin = document.getElementById("all");
 	  var overlay = document.getElementById("overlay");
 	  var playin = false;
 	  const queryString = window.location.search;
@@ -35,7 +34,7 @@
 	  if (musicURL == undefined)
 	  {
 		audio.src = "https://cs1.mp3.pm/download/38764109/QVpQZnNFdmx5SXFabkRmN21GSEJabFpCVnhwTW9sYlh3ZjlzYkFHOEU5MFlEWS81OFUxYVhXTGt3Tkd2SEhKMWROV1JDZk5iVU1wS3JJNVg3T0x6eDdxNG9JNHIzWkFDYzNFRzRwNFVXNk1pdFpweDlSN2tLbVNwcnRWYkZpVXg/Ivan_Mladek_-_Jo_in_Z_Ba_in_1978_(mp3.pm).mp3";
-      }
+    }
 	  else 
 	  {
 		audio.src = musicURL;
@@ -49,11 +48,11 @@
 	  console.log(bColor);
 	  console.log(document.body.style.background);
 	  function play() {
-		bars.style.display = "inline";
-		triangle.style.display = "none";
-        audio.play();
-		playin = true;
-      }
+			bars.style.display = "inline";
+			triangle.style.display = "none";
+      audio.play();
+			playin = true;
+    }
 	  function pause() {
 	    bars.style.display = "none";
         triangle.style.display = "inline";
@@ -61,18 +60,16 @@
 		playin = false;
 	  }
 	  document.body.onkeyup = function(e) {
-		if (e.key == " " || e.code == "Space" || e.keyCode == 32  )   
-	    {
+		if (e.key == " " || e.code == "Space" || e.keyCode == 32  ) {
 		  if (playin) pause();
 		  else play();
 		}
-		if (e.key == "a" || e.code == "a" || e.keyCode == 97 )   
-	    {
+		if (e.key == "a" || e.code == "a" || e.keyCode == 97 )  {
 		  if (overlay.style.display == "none") overlay.style.display = "block";
 		  else overlay.style.display = "none";
 		}
 	  }
 	  audio.addEventListener("ended", (event) => {pause();});
-    </script>
+  </script>
   </body>
 </html>
